@@ -1,8 +1,11 @@
 package com.example.android.courtcounter;
 
-import android.support.v7.app.AppCompatActivity;
+import android.app.Activity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
@@ -16,6 +19,26 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         displayForTeamA(0);
         displayForTeamB(0);
+        //declaration of the edittext
+        EditText editTeamA = (EditText) findViewById(R.id.edittext_TeamA);
+        EditText editTeamB = (EditText) findViewById(R.id.edittext_TeamB);
+        //this enable the focus on the editText, hide also the keyboard
+        editTeamA.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (!hasFocus) {
+                    hideKeyboard(v);
+                }
+            }
+        });
+        editTeamB.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (!hasFocus) {
+                    hideKeyboard(v);
+                }
+            }
+        });
     }
 
     /**
@@ -79,5 +102,11 @@ public class MainActivity extends AppCompatActivity {
     public void freeThrowB(View view) {
         pointCountB = pointCountB + 1;
         displayForTeamB(pointCountB);
+    }
+
+    //to change the keyboard setting
+    public void hideKeyboard(View view) {
+        InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);
+        inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
 }

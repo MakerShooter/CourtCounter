@@ -1,13 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_height="wrap_content"
-    android:layout_width="match_parent">
-
     <RelativeLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+
+        >
 
         <ImageView
             android:id="@+id/imageBasket"
@@ -26,23 +22,30 @@
             android:layout_height="match_parent"
             android:orientation="horizontal"
             tools:context="com.example.android.courtcounter.MainActivity"
-            android:baselineAligned="false">
+            android:baselineAligned="false"
+            android:clickable="true"
+            android:focusableInTouchMode="true">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_weight="0.5"
                 android:orientation="vertical">
 
-                <TextView
+                <EditText
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginBottom="@dimen/activity_horizontal_margin"
                     android:layout_marginTop="@dimen/activity_horizontal_margin"
                     android:padding="4dp"
-                    android:text="@string/strTeamA"
-                    android:textColor="#FFFF00" />
+                    android:hint="@string/strTeamA"
+                    android:textColor="#FFFF00"
+                    android:textColorHint="#FFFF00"
+                    android:id="@+id/edittext_TeamA"
+                    android:maxLines="1"
+                    android:maxLength="50"
+                    />
 
 
                 <TextView
@@ -89,23 +92,29 @@
                     android:background="@drawable/mybutton"
                     android:onClick="freeThrow"
                     android:text="@string/strFreeThrow" />
+
+
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_weight="0.5"
                 android:orientation="vertical">
 
-                <TextView
+                <EditText
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginBottom="@dimen/activity_horizontal_margin"
                     android:layout_marginTop="@dimen/activity_horizontal_margin"
                     android:padding="4dp"
-                    android:text="@string/strTeamB"
-                    android:textColor="#FFFF00" />
+                    android:hint="@string/strTeamB"
+                    android:textColor="#FFFF00"
+                    android:textColorHint="#FFFF00"
+                    android:id="@+id/edittext_TeamB"
+                    android:maxLines="1"
+                    android:maxLength="50"/>
 
                 <TextView
                     android:id="@+id/team_b_score"
@@ -150,21 +159,23 @@
                     android:background="@drawable/mybutton"
                     android:onClick="freeThrowB"
                     android:text="@string/strFreeThrow" />
+
             </LinearLayout>
 
         </LinearLayout>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/mybutton"
+        android:onClick="resetBothTeams"
+        android:text="@string/reset"
+        android:layout_marginLeft="32dp"
+        android:layout_marginRight="32dp"
+        android:layout_marginBottom="32dp"
+        android:id="@+id/button_reset"/>
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="false"
-            android:layout_below="@id/activity_main"
-            android:layout_centerHorizontal="true"
-            android:layout_margin="32dp"
-            android:background="@drawable/mybutton"
-            android:onClick="resetBothTeams"
-            android:text="@string/reset" />
 
-    </RelativeLayout>
 
-</ScrollView>
+</RelativeLayout>
