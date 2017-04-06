@@ -10,15 +10,14 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-    int pointCountA = 0;
-    int pointCountB = 0;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        displayForTeamA(0);
-        displayForTeamB(0);
+        displayForTeamA(pointCountA);
+        displayForTeamB(pointCountB);
         //declaration of the edittext
         EditText editTeamA = (EditText) findViewById(R.id.edittext_TeamA);
         EditText editTeamB = (EditText) findViewById(R.id.edittext_TeamB);
@@ -109,4 +108,41 @@ public class MainActivity extends AppCompatActivity {
         InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);
         inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
+
+    public void onResume() {
+        super.onResume();
+        displayForTeamA(pointCountA);
+        displayForTeamB(pointCountB);
+
+    }
+
+    // PRIVATE SCAFFOLDING
+
+
+    private static final String STATE_TEAMA = MainActivity.class.getName()+ ".BUTTON_CLICK_COUNT_A";
+    private static final String STATE_TEAMB = MainActivity.class.getName()+ ".BUTTON_CLICK_COUNT_B";
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putSerializable(STATE_TEAMA, pointCountA);
+        outState.putSerializable(STATE_TEAMB, pointCountB);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle bundle) {
+        super.onRestoreInstanceState(bundle);
+        pointCountA = (Integer)bundle.getSerializable(STATE_TEAMA);
+        pointCountB = (Integer)bundle.getSerializable(STATE_TEAMB);
+
+    }
+
+    // BEGIN PRIVATE STATE VARIABLES
+
+
+    private Integer pointCountA = 0;
+    private Integer pointCountB = 0;
+    // END PRIVATE STATE VARIABLES
+
+
 }
