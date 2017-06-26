@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Court Counter</string>
+    <string name="app_name">Basketball Counter</string>
     <string name="strTreePoints">+3 Points</string>
     <string name="strFreeThrow">Free Throw</string>
     <string name="strTeamB">Team B</string>
